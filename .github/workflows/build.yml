@@ -1,0 +1,80 @@
+name: Unit Test
+env:
+    TESTING_ENV: ${{ secrets.TESTING_ENV }}
+
+on:
+    pull_request:
+        branches:
+            - 'main'
+        types: [ opened, synchronize, reopened, ready_for_review ]
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    unit:
+        strategy:
+            fail-fast: false
+            matrix:
+                version: [
+                    {
+                        "php": "8.0",
+                        "laravel": "^9"
+                    },
+                    {
+                        "php": "8.1",
+                        "laravel": "^9"
+                    },
+                    {
+                        "php": "8.2",
+                        "laravel": "^9"
+                    },
+                    {
+                        "php": "8.1",
+                        "laravel": "^10"
+                    },
+                    {
+                        "php": "8.2",
+                        "laravel": "^10"
+                    },
+                    {
+                        "php": "8.3",
+                        "laravel": "^10"
+                    },
+                    {
+                        "php": "8.2",
+                        "laravel": "^11"
+                    },
+                    {
+                        "php": "8.3",
+                        "laravel": "^11"
+                    }
+                ]
+        runs-on: ubuntu-latest
+        steps:
+            -   uses: actions/checkout@v3
+                if: success()
+
+            -   name: Setup PHP with coverage driver
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.version.php }}
+                    coverage: pcov
+
+            -   name: Setup
+                if: success()
+                run: |
+                    composer install --no-interaction
+                    composer require laravel/framework "${{ matrix.version.laravel }}"
+
+            -   name: PHPUnit tests with coverage
+                if: success()
+                run: |
+                    composer test-coverage
+
+            -   name: upload coverage to codecov.io
+                if: success() && matrix.version.php == '8.3' && matrix.version.laravel == '^11'
+                uses: codecov/codecov-action@v3
+                with:
+                    token: ${{ secrets.CODECOV_TOKEN }}
+                    file: ./coverage.xml
