@@ -65,7 +65,7 @@ jobs:
                 if: success()
                 run: |
                     composer install --no-interaction
-                    composer require laravel/framework "${{ matrix.version.laravel }}"
+                    composer require laravel/framework "${{ matrix.version.laravel }}" -W
 
             -   name: PHPUnit tests with coverage
                 if: success()
