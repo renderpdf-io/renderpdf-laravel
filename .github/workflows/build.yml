@@ -19,35 +19,43 @@ jobs:
                 version: [
                     {
                         "php": "8.0",
-                        "laravel": "^9"
+                        "laravel": "^9",
+                        "test": "^7"
                     },
                     {
                         "php": "8.1",
-                        "laravel": "^9"
+                        "laravel": "^9",
+                        "test": "^7"
                     },
                     {
                         "php": "8.2",
-                        "laravel": "^9"
+                        "laravel": "^9",
+                        "test": "^7"
                     },
                     {
                         "php": "8.1",
-                        "laravel": "^10"
+                        "laravel": "^10",
+                        "test": "^8"
                     },
                     {
                         "php": "8.2",
-                        "laravel": "^10"
+                        "laravel": "^10",
+                        "test": "^8"
                     },
                     {
                         "php": "8.3",
-                        "laravel": "^10"
+                        "laravel": "^10",
+                        "test": "^8"
                     },
                     {
                         "php": "8.2",
-                        "laravel": "^11"
+                        "laravel": "^11",
+                        "test": "^9"
                     },
                     {
                         "php": "8.3",
-                        "laravel": "^11"
+                        "laravel": "^11",
+                        "test": "^9"
                     }
                 ]
         runs-on: ubuntu-latest
@@ -65,7 +73,10 @@ jobs:
                 if: success()
                 run: |
                     composer install --no-interaction
-                    composer require laravel/framework "${{ matrix.version.laravel }}" -W
+                    composer require \
+                        laravel/framework "${{ matrix.version.laravel }}" \
+                        orchestra/testbench "${{ matrix.version.test }}" \
+                        -W
 
             -   name: PHPUnit tests with coverage
                 if: success()
