@@ -1,5 +1,8 @@
 # Render HTML to PDF for Laravel - RenderPDF.io Laravel Driver
 
+[![Unit Test](https://github.com/renderpdf-io/renderpdf-laravel/actions/workflows/build.yml/badge.svg)](https://github.com/renderpdf-io/renderpdf-laravel/actions/workflows/build.yml)
+
+
 ![RenderPDF.io Cover](./.github/renderpdf-io-cover.png)
 
 [RenderPDF.io](https://renderpdf.io) provides awesome & developer-friendly APIs to convert HTML to PDF. 
@@ -13,8 +16,10 @@ This is a Laravel package provides an easy integration with **RenderPDF.io**
 ## Installation
 
 ```bash
-composer install renderpdf-io/renderpdf-laravel[build.yml](..%2Flaravel-inbox-process%2F.github%2Fworkflows%2Fbuild.yml)
+composer install renderpdf-io/renderpdf-laravel
 ```
+
+Note: for Laravel 10 users, you need to install `GuzzleHTTP` too.
 
 Add the `services.renderpdf-io.key` config into your `config/services.php` (required):
 
