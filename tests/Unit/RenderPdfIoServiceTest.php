@@ -134,11 +134,11 @@ class RenderPdfIoServiceTest extends TestCase
     public function testRenderAsyncThrowsErrorBecauseMissingIdentifier(): void
     {
         $this->expectException(RenderPdfIoException::class);
+        $this->expectExceptionMessage('You must set an unique identifier when using the async mode.');
 
         $service = new RenderPdfIoService();
         $status = $service->renderAsync(new RenderPdfOptions(
             'hihi',
-            identifier: 'hehe'
         ));
 
         $this->assertTrue($status);
