@@ -1,7 +1,7 @@
 # Render HTML to PDF for Laravel - RenderPDF.io Laravel Driver
 
 [![Unit Test](https://github.com/renderpdf-io/renderpdf-laravel/actions/workflows/build.yml/badge.svg)](https://github.com/renderpdf-io/renderpdf-laravel/actions/workflows/build.yml)
-
+[![codecov](https://codecov.io/gh/renderpdf-io/renderpdf-laravel/graph/badge.svg?token=HCKVHYPM2P)](https://codecov.io/gh/renderpdf-io/renderpdf-laravel)
 
 ![RenderPDF.io Cover](./.github/renderpdf-io-cover.png)
 
