@@ -1,12 +1,14 @@
 # Render HTML to PDF for Laravel - RenderPDF.io Laravel Driver
 
+![RenderPDF.io Cover](./.github/renderpdf-io-cover.png)
+
 [RenderPDF.io](https://renderpdf.io) provides awesome & developer-friendly APIs to convert HTML to PDF. 
 
 This is a Laravel package provides an easy integration with **RenderPDF.io**
 
 ## Requirement
-- PHP 8+
-- Laravel 9+
+- PHP 8.1 and above
+- Laravel 10 and above
 
 ## Installation
 
